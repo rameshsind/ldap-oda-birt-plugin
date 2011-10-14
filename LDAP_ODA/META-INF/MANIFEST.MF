@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: LDAP Data Source
+Bundle-SymbolicName: LDAP_ODA; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .,
+ src
+Bundle-Activator: org.eclipse.birt.report.data.oda.ldap.Activator
+Bundle-Localization: plugin
+Export-Package: org.eclipse.birt.report.data.oda.ldap.impl;version="1.0.0.qualifier"
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda;bundle-version="[3.3.0,4.0.0)",
+ org.eclipse.datatools.connectivity.oda.profile;bundle-version="[3.2.0,4.0.0)"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
