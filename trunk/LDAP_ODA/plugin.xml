@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.eclipse.birt.report.data.oda.ldap"
+         name="LDAP Data Source"
+         point="org.eclipse.datatools.connectivity.oda.dataSource">
+      <dataSource
+            driverClass="org.eclipse.birt.report.data.oda.ldap.impl.Driver"
+            defaultDisplayName="LDAP Data Source"
+            setThreadContextClassLoader="false"
+            odaVersion="3.2"
+            id="org.eclipse.birt.report.data.oda.ldap">
+         <properties>
+            <property
+                  allowsEmptyValueAsNull="true"
+                  defaultDisplayName="Host Name"
+                  defaultValue="127.0.0.1"
+                  isEncryptable="false"
+                  name="HOSTNAME"
+                  type="string">
+            </property>
+            <property
+                  allowsEmptyValueAsNull="true"
+                  canInherit="true"
+                  defaultDisplayName="Port"
+                  defaultValue="389"
+                  isEncryptable="false"
+                  name="PORT"
+                  type="string">
+            </property>
+            <property
+                  allowsEmptyValueAsNull="true"
+                  defaultDisplayName="Authentication"
+                  defaultValue="none"
+                  isEncryptable="false"
+                  name="Authentication"
+                  type="string">
+               <choice
+                     defaultDisplayName="Simple"
+                     name="simple"
+                     value="simple">
+               </choice>
+               <choice
+                     defaultDisplayName="Anonymous"
+                     name="none"
+                     value="none">
+               </choice>
+            </property>
+            <property
+                  allowsEmptyValueAsNull="true"
+                  defaultDisplayName="Security Principal"
+                  isEncryptable="false"
+                  name="SecurityPrincipal"
+                  type="string">
+            </property>
+            <property
+                  allowsEmptyValueAsNull="true"
+                  defaultDisplayName="Security Credentials"
+                  isEncryptable="true"
+                  name="SecurityCredentials"
+                  type="string">
+            </property>
+         </properties>
+      </dataSource>
+      <dataSet
+            defaultDisplayName="LDAP Data Set"
+            id="org.eclipse.birt.report.data.oda.ldap.dataSet">
+         <dataTypeMapping
+               nativeDataTypeCode="1"
+               odaScalarDataType="String"
+               nativeDataType="String">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="4"
+               odaScalarDataType="Integer"
+               nativeDataType="Integer">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="8"
+               odaScalarDataType="Double"
+               nativeDataType="Double">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="3"
+               odaScalarDataType="Decimal"
+               nativeDataType="BigDecimal">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="91"
+               odaScalarDataType="Date"
+               nativeDataType="Date">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="92"
+               odaScalarDataType="Time"
+               nativeDataType="Time">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="93"
+               odaScalarDataType="Timestamp"
+               nativeDataType="Timestamp">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="16"
+               odaScalarDataType="Boolean"
+               nativeDataType="Boolean">
+         </dataTypeMapping>
+      </dataSet>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            name="%data.source.name"
+            parentCategory="org.eclipse.datatools.connectivity.oda.profileCategory"
+            id="%oda.data.source.id">
+      </category>
+      <connectionProfile
+            pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
+            name="%connection.profile.name"
+            category="%oda.data.source.id"
+            id="%oda.data.source.id">
+      </connectionProfile>
+      <connectionFactory
+            name="ODA Connection Factory"
+            profile="%oda.data.source.id"
+            class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory"
+            id="org.eclipse.datatools.connectivity.oda.IConnection">
+      </connectionFactory>
+   </extension>
+
+</plugin>
